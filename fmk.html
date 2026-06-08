@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에프앰케이</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Black+Han+Sans&family=Cherry+Bomb+One&family=Contrail+One&family=Dongle&family=Gugi&family=Jua&family=Major+Mono+Display&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Orbit&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        *{
+             font-family: "Atkinson Hyperlegible", sans-serif;
+        }
+        header{
+            width: 100%;
+            height: 80px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            border-bottom: 1px solid rgb(175, 175, 175);
+            position: fixed;
+            top: 0;
+            left: 0;
+
+        }
+        header.on{
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        .logo{
+
+        }
+        nav{
+            width: 90%;
+            gap: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        .wide1{
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            text-align: center;
+        }
+        .wide1 h1{
+            /* margin-top: 70px; */
+            font-size: 80px;
+        }
+        .wide1 span{
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .menu{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: start;
+            padding-left: 30px;
+            align-items: center;
+            gap: 50px;
+            font-weight: bold;
+            
+            border-bottom: 1px solid rgb(175, 175, 175) ;
+        }
+        button{
+            color: rgb(175, 175, 175);
+        }
+        button.on{
+            color: black;
+        }
+        section{
+            width: 100%;
+            height: 100vh;
+            padding-bottom: 150px;
+            display: none;
+            /* border: 1px solid red; */
+        }
+        section.on{
+            display: block;
+        }
+        .page{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            background-color: rgb(255, 255, 255);
+        }
+        .page.on{
+            display: block;
+        }
+        .mage1,.cat, .mira{
+            width: 100%;
+            height: 100%;
+            background-image: url(./img/fmk/1.png);
+        }
+        .cat{
+            background-image: url(./img/fmk/mage2.png);
+        }
+        .mira{
+            background-image: url(./img/fmk/mage3.png);
+        }
+        /* .mage2{
+            width: 100%;
+            height: 100%;
+            background-image: url(./img/fmk/mage2.png);
+        }
+        .mage3{
+            width: 100%;
+            height: 100%;
+            background-image: url(./img/fmk/mage3.png);
+        } */
+        .ig2{
+            width: 100%;
+            height: 80%;
+            background-image: url(./img/fmk/2.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            /* border: 1px solid red; */
+        }
+        .ig2:hover{
+            background-image: url(./img/fmk/8.png);
+        }
+        .miki1{
+            width: 100%;
+            height: 80%;
+            background-image: url(./img/fmk/4.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .miki1:hover{
+             background-image: url(./img/fmk/7.png);
+            
+        }
+         .miki2:hover{
+            background-image: url(./img/fmk/hv2.png);
+        }
+        .miki2{
+             width: 100%;
+            height: 80%;
+            background-image: url(./img/fmk/5.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ig3,.oct{
+            width: 100%;
+            height: 80%;
+            background-image: url(./img/fmk/3.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .ig3:hover{
+            background-image: url(./img/fmk/hv1.png);
+        }
+        .oct{
+            background-image: url(./img/fmk/one.png);
+        }
+         .oct:hover{
+            background-image: url(./img/fmk/onehv.png);
+        }
+         /* .oct2{
+            background-image: url(./img/fmk/8.png);
+        } */
+      
+        .text1, .text2{
+            margin-top: 30px;
+            padding-left: 20px;
+            padding-top: 10px;
+            font-weight: bold;
+            /* border: 1px solid red; */
+        }
+        .mage2{
+            border-bottom: 1px solid rgb(175, 175, 175);
+            border-right: 1px solid rgb(175, 175, 175);
+            width: 100%;
+            height: 85%;
+            display: flex;
+            flex-direction: column;
+        }
+        .mage3{
+            border-bottom: 1px solid rgb(175, 175, 175);
+            width: 100%;
+            height: 85%;
+            
+        }
+        footer{
+            padding: 20px;
+            width: 100%;
+            height: 380px;
+            border-top: 2px solid rgb(0, 0, 0);
+            display: flex;
+        }
+        .lt{
+            font-size: 20px;
+            font-weight: bold;
+            width: 50%;
+            height: 100%;
+            /* background-color: aqua; */
+        }
+        .rt{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            gap: 20px;
+            /* background-color: rgb(255, 0, 0); */
+        }
+        .group1 span{
+            font-size: 15px;
+            color: rgb(172, 172, 172);
+        }
+        .top{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: black;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            line-height: 70px;
+            position: fixed;
+            bottom: 90px;
+            right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="on">
+        <div class="logo">Freeze The Power</div>
+        <nav>
+            <a>About</a>
+            <a>Products</a>
+            <a>Event</a>
+            <a>Community</a>
+        </nav>
+        <div class="icon">
+            <div class="icon1"></div>
+            <div class="icon1"></div>
+            <div class="icon1"></div>
+        </div>
+    </header>
+    <div class="wide1">
+        <h1>Product List</h1>
+        <span>Care that performs beyond routine.<br>
+Precise and result-driven. Professional, made personal.</span>
+      
+    </div>
+    <div class="menu">
+            <button>Rejuvenating</button>
+            <button>Brightening</button>
+            <button>Set</button>
+    </div>
+
+        <section class="on">
+            <div class="page">
+                <div class="mage1"></div>
+                
+                <div class="mage2">
+                    <div class="ig2"></div>
+                    <div class="text1">[1+1] fmk Rejuvenating PDRN Kit<br>
+                                    [4주 집중]탄력이 진하게 차오르는 PDRN 부스팅 케어<br>
+                                    5% 49,400원 52,000원</div>
+                </div>
+                <div class="mage3">
+                     <div class="ig3"></div>
+                    <div class="text2">fmk Rejuvenating PDRN Kit<br>
+                                    탄력이 진하게 차오르는 PDRN 부스팅 케어<br>
+                                5% 24,700원 26,000원</div>
+                </div>
+        </section>
+
+         <section class="">
+            <div class="page">
+                <div class="cat"></div>
+                
+                <div class="mage2">
+                    <div class="miki1"></div>
+                    <div class="text1">[1+1] fmk Rejuvenating PDRN Kit<br>
+                                    [4주 집중]탄력이 진하게 차오르는 PDRN 부스팅 케어<br>
+                                    5% 49,400원 52,000원</div>
+                </div>
+                <div class="mage3">
+                     <div class="miki2"></div>
+                    <div class="text2">fmk Rejuvenating PDRN Kit<br>
+                                    탄력이 진하게 차오르는 PDRN 부스팅 케어<br>
+                                5% 24,700원 26,000원</div>
+                </div>
+        </section>
+
+         <section class="">
+            <div class="page">
+                <div class="mira"></div>
+                
+                <div class="mage2">
+                    <div class="oct"></div>
+                    <div class="text1">[1+1] fmk Rejuvenating PDRN Kit<br>
+                                    [4주 집중]탄력이 진하게 차오르는 PDRN 부스팅 케어<br>
+                                    5% 49,400원 52,000원</div>
+                </div>
+                <div class="mage3">
+                     <div class="oct2"></div>
+                  
+        </section>
+
+        <footer>
+            <div class="lt">
+                <span>Where advanced results become<br>
+                    routine</span>
+                <div class="llogogo"></div>
+            </div>
+            <div class="rt">
+                <div class="group1">
+                    <h4>COMPANY</h4>
+                    <span>에이팩시티 17층 경기도 화성시 동탄순환대로 823 (영천동)<br>
+상호명 (주)지에프씨생명과학<br>
+대표자명 강희철<br>
+개인정보보호책임자 이고은<br>
+상담/주문 이메일 fmk@gfcos.co.kr</span>
+                </div>
+                <div class="group1">
+                    <h4>CS CENTER</h4>
+                    <span>031-5183-5510<br>
+평일 월-금 : AM 10:00 ~ PM 17:00<br>
+(주말 및 공휴일 제외)<br>
+(점심시간 PM 12:00~PM 13:30)</span>
+                </div>
+                <div class="group1">
+                    <h4>INFORMATION</h4>
+                    <span>사업자 등록번호 : 211-87-16248<br>
+통신판매신고 : 2026-화성동탄-1753<br>
+[사업자정보확인]<br>
+Hosting by Cafe24</span>
+                </div>
+            </div>
+        </footer>
+
+        <button class="top">top</button>
+    <script>
+         $(window).on("scroll", function(){
+            let scrt=$(window).scrollTop();
+            console.log(scrt)
+
+            if(scrt>80){
+                $("header").addClass("on")
+                $(".top").fadeIn()
+            }else{
+                $("header").removeClass("on")
+                $(".top").fadeOut()
+            }
+
+        })
+
+        $(".top").on("click",function(){
+            $("html, body").animate({
+                scrollTop: 0
+            }, 500)
+        })
+
+
+
+
+
+
+         $(".menu button").on("click", function(){
+            let idx=$(this).index()
+            $(".menu button").removeClass("on");
+            $(this).addClass("on")
+
+             $("section").removeClass("on")
+             $("section").eq(idx).addClass("on")
+        })
+    </script>
+</body>
+</html>
