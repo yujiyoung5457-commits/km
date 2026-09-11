@@ -34,6 +34,9 @@
         .logo{
 
         }
+        .icon{
+            display: none;
+        }
         nav{
             width: 90%;
             gap: 40px;
@@ -252,6 +255,132 @@
             bottom: 90px;
             right: 40px;
         }
+
+        /* 모바일 화면에서는 상품을 한 줄씩 보여 줍니다. */
+        @media (max-width: 768px){
+            header{
+                height: 60px;
+                align-items: center;
+                z-index: 10;
+            }
+            header.on{
+                background-color: rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(2);
+            }
+            .logo{
+                margin-left: 34px;
+                font-size: 18px;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+            nav{
+                display: none;
+            }
+            .icon{
+                width: 22px;
+                height: 22px;
+                display: block;
+                position: relative;
+                margin-left: auto;
+                margin-right: 34px;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+            }
+            .icon::before,
+            .icon::after{
+                content: "";
+                position: absolute;
+                top: 10px;
+                left: 0;
+                width: 22px;
+                height: 3px;
+                background: #111;
+            }
+            .icon::before{
+                transform: rotate(45deg);
+            }
+            .icon::after{
+                transform: rotate(-45deg);
+            }
+            .icon1{
+                display: none;
+            }
+            .wide1{
+                height: 260px;
+                padding: 60px 20px 20px;
+            }
+            .wide1 h1{
+                font-size: 46px;
+                line-height: 1.1;
+            }
+            .wide1 span{
+                margin-top: 12px;
+                font-size: 13px;
+            }
+            .menu{
+                height: 52px;
+                padding: 0 16px;
+                gap: 24px;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .menu button{
+                flex: 0 0 auto;
+            }
+            section{
+                height: auto;
+                padding-bottom: 0;
+            }
+            .page{
+                height: auto;
+                flex-direction: column;
+            }
+            .mage1, .cat, .mira{
+                height: 375px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .mage2, .mage3{
+                width: 100%;
+                height: auto;
+                border-right: 0;
+            }
+            .ig2, .miki1, .miki2, .ig3, .oct, .oct2{
+                height: 300px;
+            }
+            .text1, .text2{
+                min-height: 110px;
+                margin-top: 0;
+                padding: 16px;
+                font-size: 14px;
+                line-height: 1.7;
+            }
+            footer{
+                width: 100%;
+                height: auto;
+                padding: 28px 16px;
+                flex-direction: column;
+                gap: 28px;
+            }
+            .lt, .rt{
+                width: 100%;
+                height: auto;
+            }
+            .rt{
+                flex-direction: column;
+                gap: 20px;
+            }
+            .top{
+                width: 52px;
+                height: 52px;
+                right: 20px;
+                bottom: 24px;
+                line-height: 52px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -263,11 +392,11 @@
             <a>Event</a>
             <a>Community</a>
         </nav>
-        <div class="icon">
+        <button class="icon" type="button" aria-label="메뉴 닫기">
             <div class="icon1"></div>
             <div class="icon1"></div>
             <div class="icon1"></div>
-        </div>
+        </button>
     </header>
     <div class="wide1">
         <h1>Product List</h1>
